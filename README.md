@@ -1,10 +1,6 @@
 # Learning about the TIC-80
 
-This repository is for notes about my slow process of getting my head around the TIC-80 virtual retrocomputer. Thinking about using it as an exercise in a corporate code dojo, as an incentive to learn; but don't want that to become a synthetic source of pressure.
-
-## Starting from Nowhere
-
-I have been coding for a long time but always at a high level useful for web / GIS / data science work, in languages like python, Perl and R. I've never had to think about where memory is, what's in it and where it's going. It would be interesting to know!
+This repository is for notes about my slow process of getting my head around the [TIC-80](https://tic80.com) virtual retrocomputer. Thinking about using it as an exercise in a corporate code dojo, as an incentive to learn; but don't want that to become a synthetic source of pressure. I've always coded in "high level" / abstract languages useful for web / GIS / data science work, like python, Perl and R. I've never had to think about where memory is, what's in it and where it's going. It would be interesting to know!
 
 ## The TIC-80
 
@@ -32,6 +28,6 @@ run
 
 And it starts blatting out random bytes as noise, but it is a start! Then you can `Esc` into the editor and `F1` etc to pan about its different editing modes for maps, sprites, music and so on.
 
-`20.tic` is a more interesting cart, it defines waveforms as hex strings and pokes them into memory with parameters, you can edit the waveform stringd and then try out a sort of visual theremin that plays you the shape and shows you the effect of frequency and pitch changes as your cursor moves in 2d space.
+`20.tic` is a more interesting cart, it defines waveforms as hex strings and pokes them into memory with parameters, you can edit the waveform strings and then try out a sort of visual theremin that plays you the shape and shows you the effect of frequency and pitch changes as your cursor moves in 2d space.
 
 That's about it for the day - noodling about in some other carts from [tic80.com](https://tic80.com) you can see people calling higher level `sfx()` functions which work on waveforms that must have already been put into the `tic80`s memory. There's a graphical editor for the sound effects that comes with the inbuilt interface, you can draw and shape the forms and save them, there are YouTube videos about that, if you like to watch videos and poke at graphical interfaces.
