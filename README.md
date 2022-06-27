@@ -31,3 +31,25 @@ And it starts blatting out random bytes as noise, but it is a start! Then you ca
 `20.tic` is a more interesting cart, it defines waveforms as hex strings and pokes them into memory with parameters, you can edit the waveform strings and then try out a sort of visual theremin that plays you the shape and shows you the effect of frequency and pitch changes as your cursor moves in 2d space.
 
 That's about it for the day - noodling about in some other carts from [tic80.com](https://tic80.com) you can see people calling higher level `sfx()` functions which work on waveforms that must have already been put into the `tic80`s memory. There's a graphical editor for the sound effects that comes with the inbuilt interface, you can draw and shape the forms and save them, there are YouTube videos about that, if you like to watch videos and poke at graphical interfaces.
+
+----
+
+This morning I made a graceless thing that worked! by pastiching together some of blinry's simpler examples and referring to the [TIC-80 cheatsheet](https://zenithsal.com/assets/documents/tic-80_cheatsheet.pdf) which makes a little bit more sense each time.
+
+```
+function TIC()
+  map()
+  mx, my = mouse()
+  x = 116
+  y = 61
+  circ(x,y,mx/4,255) 
+  print(mx,180,4,12)
+  print(my,210,4,12)
+end
+```
+
+This grabs the x and y coordinates of the mouse pointer, prints them out in the top right and draws a grey circle that resizes itself relative to where you are on the x axis. Unsure what the color value of the last parameter to `circ` is, or what language this is (lua?). What would be nice here is a sort of trombone effect where the sound gets sharper and more emphatic as the circle resizes but this is enough for now.
+
+The most effort here is _not_ using vim muscle memory in the built-in code editor inside `tic80`! Save it from the CLI with `save zool01.tic` to then be able to Ctrl-S in the editor.
+
+
