@@ -42,7 +42,7 @@ function TIC()
   mx, my = mouse()
   x = 116
   y = 61
-  circ(x,y,mx/4,255) 
+  circ(x,y,mx/4,15) 
   print(mx,180,4,12)
   print(my,210,4,12)
 end
@@ -52,4 +52,11 @@ This grabs the x and y coordinates of the mouse pointer, prints them out in the 
 
 The most effort here is _not_ using vim muscle memory in the built-in code editor inside `tic80`! Save it from the CLI with `save zool01.tic` to then be able to Ctrl-S in the editor.
 
+----
+
+Looking to understand the colour values, the TIC-80 has a palette of 16 colours [with a pleasant default](https://github.com/nesbox/TIC-80/wiki/palette) but you can [overwrite the part of its memory](https://github.com/nesbox/TIC-80/wiki/ram#palette) that holds the palette and define your own. You could do this per "scanline" calling the `BDR` function and get more to display at once [wiki example showing this grayscale](https://github.com/nesbox/TIC-80/wiki/BDR). It's hard to see too much colour but the default palette has three greys at indices 13, 14, 15, it's fine.
+
+Added an outline to the circle by writing slightly larger ones first like you'd do a label outline. A hole in the centre it would be nice to get a pulsing effect for. A counter outside the `TIC` function which you can increment per frame to keep track of relatively when you are, and consider what can be done with that, or a call to the [time() function](https://github.com/nesbox/TIC-80/wiki/time) that returns milliseconds since the cart started.
+
+Kindly linked to this [fab looking set of tips for "byte battles"](https://github.com/vsariola/battletricks) (e.g. compressing code size to make it fit arbitrary competition weights) the gut response was "byte battles are well out of my league" but skimming back over it, there are tips for things like a ["motion blur"](https://github.com/vsariola/battletricks#motion-blur) which could make for a pulse effect. 
 
