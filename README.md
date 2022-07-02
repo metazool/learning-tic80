@@ -60,3 +60,28 @@ Added an outline to the circle by writing slightly larger ones first like you'd 
 
 Kindly linked to this [fab looking set of tips for "byte battles"](https://github.com/vsariola/battletricks) (e.g. compressing code size to make it fit arbitrary competition weights) the gut response was "byte battles are well out of my league" but skimming back over it, there are tips for things like a ["motion blur"](https://github.com/vsariola/battletricks#motion-blur) which could make for a pulse effect. 
 
+----
+
+Paused for a few days due to a work-related crunch using up all available code energy. It's Saturday morning, and time to turn this thing into a musical implement, called a `therebone`. For a first cut of this, lifting and lightly adapting the he code from the [theremin example](https://blinry.org/50-tic80-carts/) from blinry's 50 carts page. We pass it the circle radius derived from the mouse coordinates, and use that to set the frequency of the square wave, keeping the volume at an arbitrary constant.
+
+`poke` / `poke4` are setting bits and bytes in memory, and the docs for [`peek`](https://github.com/nesbox/TIC-80/wiki/peek) tell you a bit more about where it's going. Taking some of them out, the sound became very blitty, there's a lot more to understand! The `0x0FF9` at the top is the address of the "sound registers" in memory, you just have to [know by looking it up in the tables of addresses](https://github.com/nesbox/TIC-80/wiki/RAM). Here's a [cart for exploring the sound registers](https://tic80.com/play?cart=807) to look inside another time.
+
+ 
+```
+sound=0x0FF9
+
+function horn(r)
+ freq=(1000*math.log(1+r/240))//1
+ vol=10
+ waveform="00000000ffffffff"
+ poke4(2*sound, freq&0x00f)
+ poke4(2*sound+1, (freq&0x0f0)>>4)
+ poke4(2*sound+2, (freq&0xf00)>>8)
+ poke4(2*sound+3, vol)
+ for i=0,7 do
+  byte=tonumber(waveform:sub(1+2*i,2+2*i),16)
+  trace(byte)
+  poke(sound+2+i, byte)
+ end
+end 
+```
