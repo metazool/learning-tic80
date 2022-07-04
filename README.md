@@ -85,3 +85,14 @@ function horn(r)
  end
 end 
 ```
+
+----
+
+Yesterday was a washout, started trying to break the above code apart in another cart to get a handle on what it's doing managed to crash the `tic80` (related to not drawing anything?), read the code in the "sound toys" cart and didn't enjoy it, gave up after some minutes. Can't win every morning.
+
+This morning's idea is to draw circles from scratch, found Bresenham's midpoint circle algorithm and a [lua implementation of it](https://github.com/iskolbin/lplot/blob/master/plot.lua) to borrow from. 
+
+See also [TIC-80, the missing manual](https://hub.xpuendb.nl/sandbot/PrototypingTimes/tic80-manual.html) for a quick handy function reference
+
+Some nice effects at first drawing the midpoints of a circle growing and shrinking, any attempt to add sophistication resulted in large-number-go-up, a good exercise in seeing the effects of messing with globals within locals and what happens frame by frame, and fun doing it, one to resume another morning
+ 
